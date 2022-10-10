@@ -10,6 +10,7 @@ function handleRequest(req, res) {
         store += chunk;
     });
 
+    
     req.on("end", () => {
         if (req.method === "GET" && req.url === "/form") {
             res.setHeader("Content-Type", "text/html");
@@ -17,7 +18,7 @@ function handleRequest(req, res) {
         }
 
         if (req.method === "POST" && req.url === "/form") {
-            var parsedData = qs.parse(store);
+            let parsedData = qs.parse(store);
             res.setHeader("Content-Type", "text/html");
             res.write(`<h2>${parsedData.name}</h2>`);
             res.write(`<h3>${parsedData.email}</h3>`);
@@ -27,6 +28,9 @@ function handleRequest(req, res) {
         }
     });
 }
+
+
+
 
 server.listen(7800, () => {
     console.log("Server started at http://localhost:7800");
