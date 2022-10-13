@@ -16,6 +16,9 @@ function handleRequest(req, res) {
         store += chunk;
     });
 
+    
+    
+    
     req.on("end", () => {
         if (url === "/users" && req.method === "GET") {
             let username = parsedUrl.query.username;
